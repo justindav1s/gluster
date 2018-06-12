@@ -1,0 +1,27 @@
+- name: disable all repos
+  command: "subscription-manager repos --disable rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rhel-7-server-rpms repo
+  command: "subscription-manager repos --enable=rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rh-gluster-3-for-rhel-7-server-rpms repo
+  command: "subscription-manager repos --enable=rh-gluster-3-for-rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: install redhat-storage-server
+  yum:
+    name: "redhat-storage-server"
+    state: latest
