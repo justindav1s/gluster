@@ -53,7 +53,7 @@ On each node :
 6. mkdir /bricks/brick2/brick
 7. Create a gluster replicated volume :
 ```
-gluster volume create rep-vol replica 2 \
+gluster volume create rep-vol replica 3 \
 gluster01:/bricks/brick2/brick \
 gluster02:/bricks/brick2/brick \
 gluster03:/bricks/brick2/brick
