@@ -3,6 +3,7 @@ nodes
 masters
 etcd
 glusterfs
+glusterfs_registry
 
 
 [OSEv3:vars]
@@ -43,7 +44,7 @@ openshift_hosted_registry_pullthrough=true
 openshift_hosted_registry_acceptschema2=true
 openshift_hosted_registry_enforcequota=true
 openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
-
+openshift_hosted_registry_storage_kind=glusterfs
 
 #Metrics config
 openshift_metrics_install_metrics=True
@@ -54,6 +55,8 @@ openshift_master_metrics_public_url=https://hawkular-metrics.apps.ocp.datr.eu/ha
 openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
+openshift_metrics_storage_kind=dynamic
+openshift_metrics_cassanda_pvc_storage_class_name="glusterfs-registry-block"
 
 
 #Logging config
@@ -66,6 +69,9 @@ openshift_logging_curator_nodeselector={"region":"master"}
 openshift_logging_kibana_key=/etc/pki/tls/private/datr.eu.key
 openshift_logging_kibana_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_logging_kibana_ca=/etc/pki/tls/certs/ca.cer
+openshift_logging_storage_kind=dynamic
+openshift_logging_es_pvc_size=10Gi
+openshift_logging_es_pvc_storage_class_name="glusterfs-registry-block"
 
 #Router config
 openshift_hosted_router_selector='region=master'
@@ -89,6 +95,27 @@ openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': ['250'], 'imag
 # See: https://github.com/nickhammond/ansible-logrotate
 logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n/var/log/spooler\n", "options": ["daily", "rotate 7","size 500M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
 
+#glusterfs stuff
+openshift_storage_glusterfs_is_native=false
+openshift_storage_glusterfs_block_deploy=false
+openshift_storage_glusterfs_storageclass=true
+openshift_storage_glusterfs_heketi_is_native=true
+openshift_storage_glusterfs_heketi_executor=ssh
+openshift_storage_glusterfs_heketi_ssh_port=22
+openshift_storage_glusterfs_heketi_ssh_user=root
+openshift_storage_glusterfs_heketi_ssh_sudo=false
+openshift_storage_glusterfs_heketi_ssh_keyfile="/root/.ssh/id_rsa"
+
+openshift_storage_glusterfs_is_native=false
+openshift_storage_glusterfs_registry_block_deploy=true
+openshift_storage_glusterfs_registry_block_storageclass=true
+openshift_storage_glusterfs_registry_block_storageclass_default=true
+openshift_storage_glusterfs_registry_heketi_is_native=true
+openshift_storage_glusterfs_registry_heketi_executor=ssh
+openshift_storage_glusterfs_registry_heketi_ssh_port=22
+openshift_storage_glusterfs_registry_heketi_ssh_user=root
+openshift_storage_glusterfs_registry_heketi_ssh_sudo=false
+openshift_storage_glusterfs_registry_heketi_ssh_keyfile="/root/.ssh/id_rsa"
 
 [nodes]
 192.168.0.35 openshift_hostname=192.168.0.35 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
@@ -98,3 +125,9 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 [etcd]
 192.168.0.35 openshift_hostname=192.168.0.35
+
+[glusterfs]
+192.168.0.32 glusterfs_ip=192.168.0.32 glusterfs_devices='[ "/dev/vdb"]'
+
+[glusterfs_registry]
+192.168.0.33 glusterfs_ip=192.168.0.33 glusterfs_devices='[ "/dev/vdb"]'

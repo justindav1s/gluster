@@ -22,3 +22,6 @@ local_issuer_cert_path="{{ users_home }}/acme/certs/ca.cer"
 public_key="{{ users_home }}/.ssh/id_rsa.pub"
 private_key="{{ users_home }}/.ssh/id_rsa"
 
+[ocp-master]
+192.168.0.35
+
