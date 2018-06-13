@@ -7,4 +7,4 @@
   gather_facts: no
   roles:
   - rhel_subscribe
-  - install_repos
+  - install_gluster_repos
