@@ -14,8 +14,3 @@
     username: "{{ user }}"
     password: "{{ password }}"
     pool_ids: "{{ poolid }}"
-
-- name: upgrade all packages
-  yum:
-    name: "*"
-    state: latest

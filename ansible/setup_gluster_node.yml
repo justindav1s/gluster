@@ -1,5 +1,5 @@
 ---
-- hosts: gluster-nodes
+- hosts: gluster-hosts
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
