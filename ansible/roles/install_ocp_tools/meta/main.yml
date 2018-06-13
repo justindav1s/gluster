@@ -1,5 +1,5 @@
 ---
 dependencies:
   - rhel_subscribe
-  - install_repos
+  - install_ocp_repos
   - sync_keys
