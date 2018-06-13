@@ -27,3 +27,4 @@
    src: "{{ public_key }}"
    dest: ~/.ssh/authorized_keys
    mode: 0600
+

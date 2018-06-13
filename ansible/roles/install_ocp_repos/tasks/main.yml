@@ -56,3 +56,8 @@
   yum:
     name: "glusterfs-fuse"
     state: latest
+
+- name: install ansible
+  yum:
+    name: "ansible"
+    state: latest

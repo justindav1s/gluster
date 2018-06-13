@@ -1,7 +1,19 @@
 [gluster-hosts]
 192.168.0.32
 192.168.0.33
-192.168.0.34
+#192.168.0.34
 
 [gluster-hosts:vars]
 app_remote_ssh_user=justin
+
+[ocp-hosts]
+192.168.0.35
+
+[ocp-hosts:vars]
+users_home=/Users/jusdavis
+app_remote_ssh_user=justin
+docker_version="docker-1.13.1"
+local_cert_path="{{ users_home }}/acme/certs/datr.eu.cer"
+local_cert_key_path="{{ users_home }}/acme/certs/datr.eu.key"
+local_issuer_cert_path="{{ users_home }}/acme/certs/ca.cer"
+

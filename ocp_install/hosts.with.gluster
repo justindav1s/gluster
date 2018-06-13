@@ -2,6 +2,7 @@
 nodes
 masters
 etcd
+glusterfs
 
 
 [OSEv3:vars]
@@ -90,10 +91,10 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 
 [nodes]
-192.168.0.20 openshift_hostname=192.168.0.20 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
+192.168.0.35 openshift_hostname=192.168.0.35 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
 
 [masters]
-192.168.0.20 openshift_hostname=192.168.0.20 openshift_schedulable=True
+192.168.0.35 openshift_hostname=192.168.0.35 openshift_schedulable=True
 
 [etcd]
-192.168.0.20 openshift_hostname=192.168.0.20
+192.168.0.35 openshift_hostname=192.168.0.35
