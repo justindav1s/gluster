@@ -1,0 +1,41 @@
+- name: "install {{ docker_version }}"
+  yum:
+    name: "{{ docker_version }}"
+    state: latest
+
+- pause:
+    seconds: 5
+
+- name: enable the docker service
+  systemd:
+    enabled: yes
+    name: docker
+
+- pause:
+    seconds: 5
+
+- name: copy docker-storage-setup to servers
+  copy:
+   src: docker-storage-setup
+   dest: /etc/sysconfig/
+   owner: root
+   group: root
+   mode: 0600
+
+- pause:
+    seconds: 5
+
+- name: run docker-storage-setup
+  command: "docker-storage-setup"
+  register: result
+- debug:
+    var: result.stdout
+
+- pause:
+    seconds: 5
+
+- name: restart docker service, and daemon-reload to pick up config changes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker
