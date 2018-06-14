@@ -1,5 +1,4 @@
 ---
-
 - hosts: ocp-hosts
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
