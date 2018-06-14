@@ -1,0 +1,32 @@
+---
+
+- hosts: ocp-hosts
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: no
+  gather_facts: no
+  roles:
+  - sync_keys
+
+- hosts: ocp-hosts
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
+  - rhel_subscribe
+  - install_ocp_repos
+  - sync_keys
+  - install_certs
+  - docker_config
+
+- hosts: ocp-master
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
+  - install_ocp_tools
+  - ocp_install_scripts
