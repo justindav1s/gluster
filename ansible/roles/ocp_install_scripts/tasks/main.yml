@@ -12,7 +12,7 @@
 
 - name: copy prereqs.sh to master
   copy:
-   src: install_ocp.sh
+   src: prereqs.sh
    dest: /root/ocp/prereqs.sh
    mode: 0755
 
