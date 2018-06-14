@@ -4,7 +4,8 @@
 #192.168.0.34
 
 [gluster-hosts:vars]
-users_home=/Users/jusdavis
+#users_home=/Users/jusdavis
+users_home=/home/justin
 app_remote_ssh_user=justin
 public_key="{{ users_home }}/.ssh/id_rsa.pub"
 private_key="{{ users_home }}/.ssh/id_rsa"
@@ -13,7 +14,8 @@ private_key="{{ users_home }}/.ssh/id_rsa"
 192.168.0.35
 
 [ocp-hosts:vars]
-users_home=/Users/jusdavis
+#users_home=/Users/jusdavis
+users_home=/home/justin
 app_remote_ssh_user=justin
 docker_version="docker-1.13.1"
 local_cert_path="{{ users_home }}/acme/certs/datr.eu.cer"
