@@ -40,3 +40,4 @@
   gather_facts: no
   roles:
   - install_ocp_tools
+  - ocp_install_scripts

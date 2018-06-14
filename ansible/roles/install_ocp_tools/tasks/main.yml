@@ -24,35 +24,3 @@
   yum:
     name: "ansible"
     state: latest
-
-- name: make home for scripts and inventory
-  file:
-    path: /root/ocp
-    state: directory
-    mode: 0700
-
-- name: copy install_ocp.sh to master
-  copy:
-   src: install_ocp.sh
-   dest: /root/ocp/install_ocp.sh
-   mode: 0755
-
-- name: copy makes_admin.sh to master
-  copy:
-   src: makes_admin.sh
-   dest: /root/ocp/makes_admin.sh
-   mode: 0755
-
-
-- name: copy uninstall_ocp.sh to master
-  copy:
-   src: uninstall_ocp.sh
-   dest: /root/ocp/uninstall_ocp.sh
-   mode: 0755
-
-
-- name: copy hosts.with.gluster to master
-  copy:
-   src: hosts.with.gluster
-   dest: /root/ocp/hosts.with.gluster
-   mode: 0755
