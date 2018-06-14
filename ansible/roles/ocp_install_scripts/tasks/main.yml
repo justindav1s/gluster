@@ -10,6 +10,12 @@
    dest: /root/ocp/install_ocp.sh
    mode: 0755
 
+- name: copy prereqs.sh to master
+  copy:
+   src: install_ocp.sh
+   dest: /root/ocp/prereqs.sh
+   mode: 0755
+
 - name: copy makes_admin.sh to master
   copy:
    src: makes_admin.sh
