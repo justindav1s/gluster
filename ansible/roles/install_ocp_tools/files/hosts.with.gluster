@@ -117,6 +117,8 @@ openshift_storage_glusterfs_registry_heketi_ssh_user=root
 openshift_storage_glusterfs_registry_heketi_ssh_sudo=false
 openshift_storage_glusterfs_registry_heketi_ssh_keyfile="/root/.ssh/id_rsa"
 
+openshift_master_dynamic_provisioning_enabled=true
+
 [nodes]
 192.168.0.35 openshift_hostname=192.168.0.35 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
 
