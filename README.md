@@ -68,3 +68,6 @@ gluster03:/bricks/brick2/brick
 8. gluster volume start rep-vol
 9. gluster volume info rep-vol 
 
+
+
+docker pull rhgs3/rhgs-volmanager-rhel7:latest
