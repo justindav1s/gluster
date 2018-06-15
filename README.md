@@ -38,6 +38,7 @@ On each node :
 4. to /etc/fstab add : "/dev/bricks/brick1  /bricks/brick1    xfs   rw,noatime,inode64,nouuid   1   2"
 5. mount -a
 6. mkdir /bricks/brick1/brick
+7. on gluster01 : gluster peer probe gluster02/3
 7. Create a gluster distributed volume :
 ```
 gluster volume create dist-vol \
