@@ -1,16 +1,20 @@
-- name: install atomic-openshift-utils, ansible
+- name: upgrade all packages
   yum:
-    name: atomic-openshift-utils, ansible
+    name: "*"
     state: latest
-
 - name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct
   yum:
     name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct
     state: latest
 
-- name: install python2-pip
+- name: install atomic-openshift-utils, ansible
   yum:
-    name: "python2-pip"
+    name: atomic-openshift-utils
+    state: latest
+
+- name: install glusterfs-fuse
+  yum:
+    name: "glusterfs-fuse"
     state: latest
 
 - name: install ansible

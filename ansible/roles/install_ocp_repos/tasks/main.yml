@@ -46,25 +46,9 @@
 - debug:
     var: result.stdout
 
-- name: add epel repo
-  command: "rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-  register: result
-  ignore_errors: True
-- debug:
-    var: result.stdout
-
-- name: upgrade all packages
-  yum:
-    name: "*"
-    state: latest
-
-- name: install glusterfs-fuse
-
-  yum:
-    name: "glusterfs-fuse"
-    state: latest
-
-- name: install ansible
-  yum:
-    name: "ansible"
-    state: latest
+#- name: add epel repo
+#  command: "rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+#  register: result
+#  ignore_errors: True
+#- debug:
+#    var: result.stdout
