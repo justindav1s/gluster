@@ -28,8 +28,20 @@
    dest: /root/ocp/uninstall_ocp.sh
    mode: 0755
 
+- name: copy hosts.minimal to master
+  copy:
+   src: hosts.minimal
+   dest: /root/ocp
+   mode: 0700
+
+- name: copy hosts to master
+  copy:
+   src: hosts
+   dest: /root/ocp
+   mode: 0700
+
 - name: copy hosts.with.gluster to master
   copy:
-   src: hosts*
+   src: hosts.with.gluster
    dest: /root/ocp
    mode: 0700
