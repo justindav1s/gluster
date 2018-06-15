@@ -1,6 +1,17 @@
 - name: "install {{ docker_version }}"
   yum:
     name: "{{ docker_version }}"
+    state: absent
+
+- name: "run wipefs -a /dev/vdb"
+  command: "wipefs -a /dev/vdb"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: "install {{ docker_version }}"
+  yum:
+    name: "{{ docker_version }}"
     state: latest
 
 - pause:
