@@ -33,7 +33,7 @@
     name: "*"
     state: latest
 
-- name: install redhat-storage-server
+- name: install redhat-storage-server glusterfs-fuse cns-deploy heketi-cli
   yum:
-    name: "redhat-storage-server glusterfs-fuse cns-deploy heketi-cli"
+    name: redhat-storage-server glusterfs-fuse cns-deploy heketi-cli
     state: latest
