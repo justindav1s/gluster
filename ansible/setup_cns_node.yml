@@ -14,8 +14,8 @@
   become_method: sudo
   gather_facts: no
   roles:
-  - rhel_subscribe
-  - install_gluster_repos
+#  - rhel_subscribe
+#  - install_gluster_repos
   - install_ocp_repos
   - sync_keys
   - install_certs
