@@ -33,9 +33,9 @@
     name: "*"
     state: latest
 
-- name: install redhat-storage-server glusterfs-fuse cns-deploy
+- name: install redhat-storage-server, glusterfs-fuse, cns-deploy
   yum:
-    name: redhat-storage-server glusterfs-fuse cns-deploy
+    name: redhat-storage-server, glusterfs-fuse, cns-deploy
     state: latest
 
 - name: install redhat-storage-server
