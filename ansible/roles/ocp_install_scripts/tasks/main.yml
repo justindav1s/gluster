@@ -40,8 +40,8 @@
    dest: /root/ocp
    mode: 0700
 
-- name: copy hosts.with.gluster to master
+- name: copy hosts.cns.gluster to master
   copy:
-   src: hosts.with.gluster
+   src: hosts.cns.gluster
    dest: /root/ocp
    mode: 0700
