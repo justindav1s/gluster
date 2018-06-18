@@ -21,3 +21,9 @@
   yum:
     name: "ansible"
     state: latest
+
+- name: "setsebool -P virt_sandbox_use_fusefs o"
+  command: "setsebool -P virt_sandbox_use_fusefs o"
+  register: result
+- debug:
+    var: result.stdout

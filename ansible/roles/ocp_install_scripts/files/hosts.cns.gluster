@@ -23,7 +23,7 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-subnet'
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
-openshift_master_cluster_hostname=192.168.0.35
+openshift_master_cluster_hostname=localhost
 openshift_logging_master_public_url=https://ocp.datr.eu:8443
 
 #Security config
@@ -95,27 +95,11 @@ openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': ['250'], 'imag
 # See: https://github.com/nickhammond/ansible-logrotate
 logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n/var/log/spooler\n", "options": ["daily", "rotate 7","size 500M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
 
-#glusterfs stuff
-openshift_storage_glusterfs_is_native=true
 openshift_storage_glusterfs_block_deploy=false
-openshift_storage_glusterfs_storageclass=true
-openshift_storage_glusterfs_heketi_is_native=true
-openshift_storage_glusterfs_heketi_executor=ssh
-openshift_storage_glusterfs_heketi_ssh_port=22
-openshift_storage_glusterfs_heketi_ssh_user=root
-openshift_storage_glusterfs_heketi_ssh_sudo=false
-openshift_storage_glusterfs_heketi_ssh_keyfile="/root/.ssh/id_rsa"
 
-openshift_storage_glusterfs_is_native=true
 openshift_storage_glusterfs_registry_block_deploy=true
 openshift_storage_glusterfs_registry_block_storageclass=true
-openshift_storage_glusterfs_registry_block_storageclass_default=true
-openshift_storage_glusterfs_registry_heketi_is_native=true
-openshift_storage_glusterfs_registry_heketi_executor=ssh
-openshift_storage_glusterfs_registry_heketi_ssh_port=22
-openshift_storage_glusterfs_registry_heketi_ssh_user=root
-openshift_storage_glusterfs_registry_heketi_ssh_sudo=false
-openshift_storage_glusterfs_registry_heketi_ssh_keyfile="/root/.ssh/id_rsa"
+openshift_storage_glusterfs_registry_block_storageclass_default=false
 
 openshift_master_dynamic_provisioning_enabled=true
 
@@ -124,16 +108,16 @@ oreg_url=registry.access.redhat.com/openshift3/ose-${component}:${version}
 openshift_examples_modify_imagestreams=true
 
 [nodes]
-192.168.0.35 openshift_hostname=192.168.0.35 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
+localhost openshift_hostname=localhost openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
 
 [masters]
-192.168.0.35 openshift_hostname=192.168.0.35 openshift_schedulable=True
+localhost openshift_hostname=localhost openshift_schedulable=True
 
 [etcd]
-192.168.0.35 openshift_hostname=192.168.0.35
+localhost openshift_hostname=localhost
 
 [glusterfs]
-192.168.0.32 glusterfs_ip=192.168.0.32 glusterfs_devices='[ "/dev/vdb"]'
+localhost glusterfs_devices='[ "/dev/vdc"]'
 
 [glusterfs_registry]
-192.168.0.33 glusterfs_ip=192.168.0.33 glusterfs_devices='[ "/dev/vdb"]'
+localhost glusterfs_devices='[ "/dev/vdc"]'
