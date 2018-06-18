@@ -18,8 +18,8 @@
     name: "{{ docker_version }}"
     state: latest
 
- - pause:
-     seconds: 5
+- pause:
+    seconds: 5
 
 - name: "run container-storage-setup --reset"
   command: "container-storage-setup --reset"
