@@ -37,3 +37,18 @@
   yum:
     name: redhat-storage-server glusterfs-fuse cns-deploy
     state: latest
+
+- name: install redhat-storage-server
+  yum:
+    name: redhat-storage-server
+    state: latest
+
+- name: install glusterfs-fuse
+  yum:
+    name: glusterfs-fuse
+    state: latest
+
+- name: install cns-deploy
+  yum:
+    name: cns-deploy
+    state: latest
