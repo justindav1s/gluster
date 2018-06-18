@@ -42,7 +42,7 @@
     seconds: 10
 
 - name: "run wipefs -af /dev/vdb"
-  command: "wipefs -a /dev/vdb"
+  command: "wipefs -af /dev/vdb"
   register: result
 - debug:
     var: result.stdout
