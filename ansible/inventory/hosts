@@ -1,5 +1,7 @@
 [gluster-hosts]
 192.168.0.26
+192.168.0.27
+192.168.0.28
 
 [gluster-hosts:vars]
 #users_home=/Users/jusdavis
@@ -10,6 +12,8 @@ private_key="{{ users_home }}/.ssh/id_rsa"
 
 [ocp-hosts]
 192.168.0.26
+192.168.0.27
+192.168.0.28
 
 [ocp-hosts:vars]
 #users_home=/Users/jusdavis

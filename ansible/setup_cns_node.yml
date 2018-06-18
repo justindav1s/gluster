@@ -21,5 +21,4 @@
   - install_certs
   - docker_config
   - install_ocp_tools
-  - ocp_install_scripts
 
