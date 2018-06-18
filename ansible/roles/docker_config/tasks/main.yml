@@ -41,9 +41,8 @@
 - pause:
     seconds: 10
 
-- name: "run rm -rf /var/lib/docker/"
-  command: "rm -rf /var/lib/docker/"
-  ignore_errors: True
+- name: "run wipefs -af /dev/vdb"
+  command: "wipefs -a /dev/vdb"
   register: result
 - debug:
     var: result.stdout
@@ -51,9 +50,9 @@
 - pause:
     seconds: 5
 
-
-- name: "run wipefs -a /dev/vdb"
-  command: "wipefs -a /dev/vdb"
+- name: "run rm -rf /var/lib/docker/"
+  command: "rm -rf /var/lib/docker/"
+  ignore_errors: True
   register: result
 - debug:
     var: result.stdout
