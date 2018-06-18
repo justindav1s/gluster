@@ -1,8 +1,3 @@
-- name: upgrade all packages
-  yum:
-    name: "*"
-    state: latest
-
 - name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct
   yum:
     name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct

@@ -5,27 +5,6 @@
     name: docker
   ignore_errors: True
 
-- name: "run container-storage-setup --reset"
-  command: "container-storage-setup --reset"
-  ignore_errors: True
-  register: result
-- debug:
-    var: result.stdout
-
-- name: "run rm -rf /var/lib/docker/"
-  command: "rm -rf /var/lib/docker/"
-  ignore_errors: True
-  register: result
-- debug:
-    var: result.stdout
-
-
-- name: "run wipefs -a /dev/vdb"
-  command: "wipefs -a /dev/vdb"
-  register: result
-- debug:
-    var: result.stdout
-
 - name: "remove {{ docker_version }}"
   yum:
     name: "{{ docker_version }}"
@@ -38,6 +17,35 @@
   yum:
     name: "{{ docker_version }}"
     state: latest
+
+ - pause:
+     seconds: 5
+
+- name: "run container-storage-setup --reset"
+  command: "container-storage-setup --reset"
+  ignore_errors: True
+  register: result
+- debug:
+    var: result.stdout
+
+- pause:
+    seconds: 5
+
+- name: "run rm -rf /var/lib/docker/"
+  command: "rm -rf /var/lib/docker/"
+  ignore_errors: True
+  register: result
+- debug:
+    var: result.stdout
+
+- pause:
+    seconds: 5
+
+- name: "run wipefs -a /dev/vdb"
+  command: "wipefs -a /dev/vdb"
+  register: result
+- debug:
+    var: result.stdout
 
 - pause:
     seconds: 5

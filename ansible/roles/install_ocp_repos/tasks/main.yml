@@ -45,3 +45,15 @@
   register: result
 - debug:
     var: result.stdout
+
+- name: add rh-gluster-3-for-rhel-7-server-rpms repo
+  command: "subscription-manager repos --disable=rh-gluster-3-for-rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rh-gluster-3-client-for-rhel-7-server-rpms repo
+  command: "subscription-manager repos --disable=rh-gluster-3-client-for-rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
