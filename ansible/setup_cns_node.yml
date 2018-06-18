@@ -14,11 +14,11 @@
   become_method: sudo
   gather_facts: no
   roles:
-  - rhel_subscribe
-  - install_gluster_repos
-  - install_ocp_repos
-  - sync_keys
-  - install_certs
+#  - rhel_subscribe
+#  - install_gluster_repos
+#  - install_ocp_repos
+#  - sync_keys
+#  - install_certs
   - docker_config
   - install_ocp_tools
   - ocp_install_scripts

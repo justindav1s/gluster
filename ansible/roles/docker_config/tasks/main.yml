@@ -21,6 +21,16 @@
 - pause:
     seconds: 5
 
+- name: stop docker service, and daemon-reload to pick up config changes
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    name: docker
+  ignore_errors: True
+
+- pause:
+    seconds: 5
+
 - name: "run container-storage-setup --reset"
   command: "container-storage-setup --reset"
   ignore_errors: True
@@ -29,7 +39,7 @@
     var: result.stdout
 
 - pause:
-    seconds: 5
+    seconds: 10
 
 - name: "run rm -rf /var/lib/docker/"
   command: "rm -rf /var/lib/docker/"
@@ -40,6 +50,7 @@
 
 - pause:
     seconds: 5
+
 
 - name: "run wipefs -a /dev/vdb"
   command: "wipefs -a /dev/vdb"
