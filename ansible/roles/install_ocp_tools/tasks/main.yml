@@ -13,8 +13,8 @@
     name: "ansible"
     state: latest
 
-- name: "setsebool -P virt_sandbox_use_fusefs o"
-  command: "setsebool -P virt_sandbox_use_fusefs o"
+- name: "setsebool -P virt_sandbox_use_fusefs on"
+  command: "setsebool -P virt_sandbox_use_fusefs on"
   register: result
 - debug:
     var: result.stdout
