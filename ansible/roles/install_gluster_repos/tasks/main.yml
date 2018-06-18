@@ -22,6 +22,12 @@
 - debug:
     var: result.stdout
 
+- name: add rh-gluster-3-client-for-rhel-7-server-rpms repo
+  command: "subscription-manager repos --enable=rh-gluster-3-client-for-rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
 - name: upgrade all packages
   yum:
     name: "*"
@@ -29,5 +35,5 @@
 
 - name: install redhat-storage-server
   yum:
-    name: "redhat-storage-server"
+    name: "redhat-storage-server glusterfs-fuse cns-deploy heketi-cli"
     state: latest

@@ -2,6 +2,7 @@
   yum:
     name: "*"
     state: latest
+
 - name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct
   yum:
     name: gcc, python-devel, nmap-ncat, bind-utils, wget, git, net-tools, iptables-services, bridge-utils, bash-completion, kexec-tools, sos, psacct
@@ -10,11 +11,6 @@
 - name: install atomic-openshift-utils, ansible
   yum:
     name: atomic-openshift-utils
-    state: latest
-
-- name: install glusterfs-fuse
-  yum:
-    name: "glusterfs-fuse"
     state: latest
 
 - name: install ansible

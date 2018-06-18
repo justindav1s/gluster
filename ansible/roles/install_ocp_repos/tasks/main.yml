@@ -4,6 +4,12 @@
 - debug:
     var: result.stdout
 
+- name: disable all repos
+  command: "subscription-manager repos --disable *"
+  register: result
+- debug:
+    var: result.stdout
+
 - name: add rhel-7-server-rpms repo
   command: "subscription-manager repos --enable rhel-7-server-rpms"
   register: result
@@ -39,16 +45,3 @@
   register: result
 - debug:
     var: result.stdout
-
-- name: add rh-gluster-3-client-for-rhel-7-server-rpms repo
-  command: "subscription-manager repos --enable=rh-gluster-3-client-for-rhel-7-server-rpms"
-  register: result
-- debug:
-    var: result.stdout
-
-#- name: add epel repo
-#  command: "rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-#  register: result
-#  ignore_errors: True
-#- debug:
-#    var: result.stdout
