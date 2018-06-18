@@ -1,9 +1,3 @@
-- name: disable all repos
-  command: "subscription-manager repos --disable *"
-  register: result
-- debug:
-    var: result.stdout
-
 - name: disable rhel-7-server-htb-rpms
   command: "subscription-manager repos --disable=rhel-7-server-htb-rpms"
   register: result
